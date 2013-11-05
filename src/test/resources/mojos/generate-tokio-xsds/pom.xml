@@ -1,0 +1,14 @@
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+                <configuration>
+                    <project implementation="net.codjo.maven.common.mock.MavenProjectMock"/>
+                    <datagenFinalFile>target/test-classes/mojos/generate-tokio-xsds/final.xml</datagenFinalFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

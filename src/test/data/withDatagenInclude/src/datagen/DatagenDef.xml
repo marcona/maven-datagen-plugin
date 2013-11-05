@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="http://datagen.xsd">
+    <roles>
+        <role id="Administration">
+            <include>*</include>
+        </role>
+    </roles>
+    <include name="@basedir@/src/datagen/my-referential.xml"/>
+</data>

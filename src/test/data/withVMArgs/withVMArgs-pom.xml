@@ -1,0 +1,16 @@
+<project>
+    <name>POM For test</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+                <configuration>
+                    <project implementation="net.codjo.maven.mojo.datagen.MavenProjectMock"/>
+                    <datagenFile>src\test\data\withDatagenInclude\src\datagen\DatagenDef.xml</datagenFile>
+                    <vmArguments>-InvalidArgument</vmArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

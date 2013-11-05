@@ -1,0 +1,22 @@
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+
+                <configuration>
+                    <project implementation="net.codjo.maven.mojo.datagen.MavenProjectMock"/>
+                    <databaseType>mysql</databaseType>
+                    <!--<buildDirectory>./target/withoutInclude</buildDirectory>-->
+                    <datagenFile>src\test\data\withoutInclude\src\datagen\DatagenDef.xml</datagenFile>
+                    <path>
+                        <sql>target/withoutInclude</sql>
+                        <client>target/withoutInclude/client</client>
+                        <server>target/withoutInclude/server</server>
+                    </path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities>
+    <entity name="com.mad.TableLabel" table="PM_TABLE_LABEL">
+        <description>Label des tables</description>
+        <feature>
+            <handler-command id="getStructure" type="string"
+                             package="com.mad">
+                <throws>Exception</throws>
+                <body>
+                    return StructureHome.getSingleton().getStructure(getContext());
+                </body>
+            </handler-command>
+        </feature>
+        <primary-key key-generator="MAX">
+            <field name="tableId"/>
+        </primary-key>
+        <properties>
+            <field name="tableId" type="java.lang.Integer">
+                <description>Numéro de table</description>
+                <sql required="true" type="integer"/>
+            </field>
+        </properties>
+    </entity>
+</entities>

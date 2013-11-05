@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://datagen.xsd">
+    <entity name="net.codjo.my.Ref" table="MY_REF">
+        <description>Une Ref</description>
+        <feature>
+            <sql/>
+        </feature>
+
+        <primary-key>
+            <field name="brickCode"/>
+        </primary-key>
+
+        <properties>
+            <field name="brickCode" type="string">
+                <description>Code brique</description>
+                <comment>Code brique</comment>
+                <sql type="varchar" precision="20" required="true"/>
+            </field>
+        </properties>
+    </entity>
+</entities>

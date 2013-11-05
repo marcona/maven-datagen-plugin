@@ -1,0 +1,17 @@
+<project>
+    <name>POM For test</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+
+                <configuration>
+                    <project implementation="net.codjo.maven.mojo.datagen.MavenProjectMock"/>
+                    <!--<buildDirectory>./target/withoutInclude</buildDirectory>-->
+                    <datagenFile>bad\path\do\not\exist\DatagenDef.xml</datagenFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

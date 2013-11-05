@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project>
+    <bannerRight>
+        <name>${project.name}</name>
+    </bannerRight>
+    <body>
+        <menu name="Overview">
+            <item name="Introduction" href="/introduction.html"/>
+            <item name="Cibles" href="/plugin-info.html"/>
+            <item name="Utilisation" href="/usage.html"/>
+            <item name="FAQ" href="/faq.html"/>
+            <item name="Historique" href="/changes-report.html"/>
+        </menu>
+    </body>
+</project>

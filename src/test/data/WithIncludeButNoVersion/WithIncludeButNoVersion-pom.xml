@@ -1,0 +1,30 @@
+<project>
+    <name>POM For test</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+
+                <configuration>
+                    <project implementation="net.codjo.maven.mojo.datagen.MavenProjectWithDependencyMock"/>
+                    <localRepository implementation="net.codjo.maven.mojo.datagen.ArtifactRepositoryMock"/>
+
+                    <includes>
+                        <include>
+                            <groupId>codjo-mad</groupId>
+                            <artifactId>codjo-mad-datagen</artifactId>
+                        </include>
+                    </includes>
+
+                    <datagenFile>src\test\data\WithIncludeButNoVersion\DatagenDef.xml</datagenFile>
+                    <path>
+                        <sql>target/WithIncludeButNoVersion</sql>
+                        <client>target/WithIncludeButNoVersion</client>
+                        <server>target/WithIncludeButNoVersion</server>
+                    </path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

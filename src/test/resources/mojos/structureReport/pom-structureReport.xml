@@ -1,0 +1,16 @@
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.codjo.maven.mojo</groupId>
+                <artifactId>maven-datagen-plugin</artifactId>
+                <configuration>
+                    <siteRenderer implementation="net.codjo.maven.common.mock.RendererMock"/>
+                    <datagenFinalFile>./target/test-classes/mojos/target/final.xml</datagenFinalFile>
+                    <resourcesDirectory>./target/test-classes/mojos</resourcesDirectory>
+                    <outputDirectory>./target/report</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

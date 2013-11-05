@@ -1,0 +1,36 @@
+ ------
+ Introduction
+ ------
+ AGF Development Team
+ ------
+ 28 Février 2007
+ ------
+
+Maven datagen plugin
+
+    Plugin permettant de declancher la librairie datagen.
+
+* Cibles
+
+  Ce plugin comporte 5 cibles :
+
+  * {{{generate-mojo.html}datagen:generate}} Goal pour la génération datagen.
+
+  * {{{package-client-mojo.html}datagen:package-client}} Goal pour créer le jar utilisé par le client.
+
+  * {{{package-server-mojo.html}datagen:package-server}} Goal pour créer le jar utilisé par le serveur.
+
+  * {{{package-sql-mojo.html}datagen:package-sql}} Goal pour créer le jar utilisé par le sql.
+
+  * {{{structure-report-mojo.html}datagen:structure-report}} Goal pour créer un rapport sur la structure SQL.
+
+* Utilisation
+
+  Les instructions permettant d'utiliser le plugin se trouve {{{usage.html}ici}}.
+
+* Exemples
+
+  Exemple d'utilisation du plugin:
+
+  * N/A
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<faqs title="Faq plugin datagen">
+    <part id="about">
+        <faq id="doc-help">
+            <question>Pourquoi la documentation ne se génère est-elle pas ?</question>
+            <answer>
+                <p>
+                    Parceque le fichier datagen ne se trouve pas la
+                    <code>${project.basedir}/src/datagen/DatagenDef.xml</code>
+                </p>
+            </answer>
+        </faq>
+    </part>
+</faqs>
