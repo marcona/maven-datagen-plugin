@@ -141,9 +141,9 @@
      -->
 
     <scm>
-        <connection>scm:git:https://github.com/codjo/datagen.git</connection>
-        <developerConnection>scm:git:https://github.com/codjo/datagen.git</developerConnection>
-        <url>https://github.com/codjo/datagen</url>
+        <connection>scm:git:https://github.com/codjo/maven-datagen-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/codjo/maven-datagen-plugin.git</developerConnection>
+        <url>https://github.com/codjo/maven-datagen-plugin</url>
     </scm>
 
 </project>
