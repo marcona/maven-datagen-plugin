@@ -17,6 +17,15 @@ public class PathUtil {
 
 
     static File classHasBeenCompiledFile(File buildDirectory, File classesDirectory) {
-        return new File(buildDirectory, classesDirectory.getName() + "-has-been-compiled");
+        return new File(toUnixLikePath(buildDirectory.getAbsolutePath()),
+                        classesDirectory.getName() + "-has-been-compiled");
+    }
+
+
+    public static String toUnixLikePath(String path) {
+        if (path != null) {
+            return path.replace('\\', '/');
+        }
+        return path;
     }
 }

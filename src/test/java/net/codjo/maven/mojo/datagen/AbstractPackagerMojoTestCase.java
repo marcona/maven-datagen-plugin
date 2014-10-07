@@ -77,7 +77,7 @@ public abstract class AbstractPackagerMojoTestCase extends DatagenTestCase {
             File targetDir = getGeneratedClassFile(targetClassesDir, "na").getParentFile();
             for (int i = 0; i < files.length; i++) {
                 File file = files[i];
-                String relativePath = PathUtil.relativePath(targetDir, file).replaceAll("\\\\", "/");
+                String relativePath = PathUtil.toUnixLikePath(PathUtil.relativePath(targetDir, file));
                 assertNotNull(relativePath + " présent", jarFile.getJarEntry(relativePath));
             }
         }

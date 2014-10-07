@@ -42,7 +42,8 @@ public class PathTest extends TestCase {
         assertEquals(new File("sql/constraint"), path.getSqlConstraint(project));
         assertEquals(new File("sql/trigger"), path.getSqlTrigger(project));
 
-        assertEquals(new File("c:/basedir/client/resources"), path.getClientResource(project));
+        assertEquals(new File("c:/basedir/client/resources").getAbsolutePath(),
+                     path.getClientResource(project).getAbsolutePath());
 
         assertEquals(new File("server/java"), path.getServerSource(project));
         assertEquals(new File("server/resources"), path.getServerResource(project));

@@ -80,15 +80,14 @@ public class Path {
         return replaceBasedir(new File(server, "java"), project);
     }
 
+
     public File getClientSource(MavenProject project) {
         return replaceBasedir(new File(client, "java"), project);
     }
 
 
     private File replaceBasedir(File file, MavenProject project) {
-        String result =
-              file.getPath().replaceAll("@basedir@",
-                                        project.getBasedir().getAbsolutePath().replace('\\', '/'));
-        return new File(result);
+        String result = file.getPath().replaceAll("@basedir@", project.getBasedir().getAbsolutePath());
+        return new File(PathUtil.toUnixLikePath(result));
     }
 }

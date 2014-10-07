@@ -10,7 +10,7 @@ import java.io.File;
 public class CompileServerMojo extends AbstractCompilerMojo {
 
     protected File getClassesDirectory() {
-        return new File(buildDirectory, "/server-classes");
+        return new File(PathUtil.toUnixLikePath(buildDirectory.getAbsolutePath()), "/server-classes");
     }
 
 

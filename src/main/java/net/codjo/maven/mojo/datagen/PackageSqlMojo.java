@@ -24,7 +24,7 @@ public class PackageSqlMojo extends AbstractDatagenMojo {
      *
      * @component
      * @readonly
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private MavenProjectHelper projectHelper;
     static final String[] SQL_EXTENSIONS = new String[]{"sql", "tab", "txt"};
@@ -36,7 +36,7 @@ public class PackageSqlMojo extends AbstractDatagenMojo {
             return;
         }
 
-        File zipFile = new File(buildDirectory, buildFilename());
+        File zipFile = new File(PathUtil.toUnixLikePath(buildDirectory.getAbsolutePath()), buildFilename());
         File sourceDir = path.getSqlDirectory(project);
         File generatedSqlFile = getOneGeneratedFile(sourceDir, SQL_EXTENSIONS);
         if (zipFile.exists()

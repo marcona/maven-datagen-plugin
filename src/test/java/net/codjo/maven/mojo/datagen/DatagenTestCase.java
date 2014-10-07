@@ -36,7 +36,8 @@ public abstract class DatagenTestCase extends AbstractMojoTestCase {
 
 
     protected File getBuildDirectory() {
-        return new File(mockUtil.getProject().getBuild().getDirectory());
+        String pathname = mockUtil.getProject().getBuild().getDirectory();
+        return new File(PathUtil.toUnixLikePath(pathname));
     }
 
 

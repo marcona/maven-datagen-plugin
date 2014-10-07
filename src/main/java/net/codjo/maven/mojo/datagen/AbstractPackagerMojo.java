@@ -16,14 +16,14 @@ public abstract class AbstractPackagerMojo extends AbstractDatagenMojo {
     /**
      * @component
      * @readonly
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private MavenProjectHelper projectHelper;
 
     /**
      * @parameter expression="${component.org.codehaus.plexus.archiver.Archiver#jar}"
      * @required
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private JarArchiver jarArchiver;
     private MavenArchiveConfiguration archive = new MavenArchiveConfiguration();
@@ -78,7 +78,8 @@ public abstract class AbstractPackagerMojo extends AbstractDatagenMojo {
 
 
     protected static File getJarFile(File basedir, String finalName, String classifier) {
-        return new File(basedir, finalName + "-" + classifier + ".jar");
+        return new File(PathUtil.toUnixLikePath(basedir.getAbsolutePath()),
+                        PathUtil.toUnixLikePath(finalName + "-" + classifier + ".jar"));
     }
 
 

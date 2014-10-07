@@ -19,6 +19,6 @@ public class PackageClientMojo extends AbstractPackagerMojo {
 
 
     protected File getClassesDirectory() {
-        return new File(buildDirectory, "/client-classes");
+        return new File(PathUtil.toUnixLikePath(buildDirectory.getAbsolutePath()), "/client-classes");
     }
 }

@@ -4,8 +4,6 @@
  * Copyright (c) 2001 AGF Asset Management.
  */
 package net.codjo.maven.mojo.datagen;
-import net.codjo.maven.common.artifact.ArtifactDescriptor;
-import net.codjo.maven.common.artifact.ArtifactGetter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +11,8 @@ import java.net.URLClassLoader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import kernel.Main;
+import net.codjo.maven.common.artifact.ArtifactDescriptor;
+import net.codjo.maven.common.artifact.ArtifactGetter;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.factory.ArtifactFactory;
 import org.apache.maven.artifact.manager.WagonManager;
@@ -38,35 +38,35 @@ public class GenerateMojo extends AbstractDatagenMojo {
      * Database type (sybase, oracle, mysql).
      *
      * @parameter expression="${databaseType}" default-value="sybase"
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private String databaseType;
     /**
      * Type de generator a activer (e.g. : "JAVA, SQL, CONFIGURATION" ).
      *
      * @parameter
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private String activatedGeneratorTypes = Main.ALL_GENERATOR;
     /**
      * Derived Artifacts List.
      *
      * @parameter default-value="${project.basedir}/src/datagen/DatagenDef.xml"
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private String datagenFile;
     /**
      * Derived Artifacts List.
      *
      * @parameter default-value="${project.basedir}/src/datagen/datagen.properties"
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private String datagenProperties;
     /**
      * Liste des includes.
      *
      * @parameter
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private ArtifactDescriptor[] includes;
     /**
@@ -79,7 +79,7 @@ public class GenerateMojo extends AbstractDatagenMojo {
      * @parameter expression="${component.org.apache.maven.artifact.manager.WagonManager}"
      * @required
      * @readonly
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private WagonManager wagonManager;
     /**
@@ -92,7 +92,7 @@ public class GenerateMojo extends AbstractDatagenMojo {
      * @parameter expression="${component.org.apache.maven.artifact.repository.metadata.RepositoryMetadataManager}"
      * @required
      * @readonly
-     * @noinspection UNUSED_SYMBOL,UnusedDeclaration
+     * @noinspection UNUSED_SYMBOL, UnusedDeclaration
      */
     private RepositoryMetadataManager repositoryMetadataManager;
 
@@ -105,15 +105,16 @@ public class GenerateMojo extends AbstractDatagenMojo {
 
         try {
             getLog().info("##### Generation DATAGEN (" + databaseType + ")");
-            if (!new File(datagenFile).exists()) {
+            if (!new File(PathUtil.toUnixLikePath(datagenFile)).exists()) {
                 getLog().info("Aucune generation car aucun fichier datagen : " + datagenFile);
                 return;
             }
 
             String datagenFileContents = loadContentsFromDatagenFile();
 
-            if (!buildDirectory.exists()) {
-                buildDirectory.mkdir();
+            File normalizedBuildDirectory = new File(PathUtil.toUnixLikePath(buildDirectory.getAbsolutePath()));
+            if (!normalizedBuildDirectory.exists()) {
+                normalizedBuildDirectory.mkdir();
             }
 
             if (includes != null) {
@@ -124,10 +125,10 @@ public class GenerateMojo extends AbstractDatagenMojo {
             datagenFileContents = replaceBasedir(datagenFileContents);
 
             String generatedDatagenFile =
-                  buildDirectory.getAbsolutePath() + "/DatagenDef.xml";
+                  normalizedBuildDirectory.getAbsolutePath() + "/DatagenDef.xml";
             writeFile(generatedDatagenFile, datagenFileContents);
 
-            String finalFilename = buildDirectory + File.separator + "final.xml";
+            String finalFilename = normalizedBuildDirectory + File.separator + "final.xml";
 
             URL[] urls = ((URLClassLoader)getClass().getClassLoader()).getURLs();
             File[] dependencies = new File[urls.length];
@@ -202,8 +203,8 @@ public class GenerateMojo extends AbstractDatagenMojo {
     private String replaceBasedir(String datagenFileContents) {
         datagenFileContents =
               datagenFileContents.replaceAll("@basedir@",
-                                             project.getBasedir().getAbsolutePath().replace('\\', '/'));
-        return datagenFileContents;
+                                             project.getBasedir().getAbsolutePath());
+        return PathUtil.toUnixLikePath(datagenFileContents);
     }
 
 
@@ -218,7 +219,7 @@ public class GenerateMojo extends AbstractDatagenMojo {
 
 
     private String loadContentsFromDatagenFile() throws IOException {
-        return FileUtils.fileRead(new File(datagenFile));
+        return FileUtils.fileRead(new File(PathUtil.toUnixLikePath(datagenFile)));
     }
 
 

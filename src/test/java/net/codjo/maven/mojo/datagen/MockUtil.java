@@ -14,7 +14,7 @@ import org.codehaus.plexus.util.FileUtils;
  */
 public class MockUtil {
     /**
-     * @noinspection StaticNonFinalField,StaticVariableMayNotBeInitialized
+     * @noinspection StaticNonFinalField, StaticVariableMayNotBeInitialized
      */
     static MockUtil singleton;
     private File pomFile;
@@ -25,7 +25,8 @@ public class MockUtil {
     private MockUtil(String pomFilePath) throws IOException {
         pomFile = new File(pomFilePath);
 
-        targetDir = new File(PlexusTestCase.getBasedir(), "target/test-harness/MockUtil");
+        targetDir = new File(PlexusTestCase.getBasedir() + File.separator + "target" + File.separator + "test-harness",
+                             "MockUtil");
         if (targetDir.exists()) {
             FileUtils.deleteDirectory(targetDir);
         }

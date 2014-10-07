@@ -22,7 +22,7 @@ public class StructureReportMojoTest extends AgfMojoTestCase {
         mojo.execute();
 
         log.assertContent("setXslResourceName(/doc/doc_structure.xsl, ./target/test-classes/mojos)"
-                          + ", generate(.\\target\\test-classes\\mojos\\target\\final.xml, StringWriter)");
+                          + ", generate(./target/test-classes/mojos/target/final.xml, StringWriter)");
 
         report.assertContent("Structure SQL, Dictionnaire des tables, generated content");
     }
